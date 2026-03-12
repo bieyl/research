@@ -1005,14 +1005,7 @@ def api_kg():
 def api_add_paper():
     """添加论文"""
     data = request.json
-    paper_id = kg.add_paper(
-        title=data.get('title', ''),
-        year=data.get('year'),
-        authors=data.get('authors', []),
-        method=data.get('method', ''),
-        research_question=data.get('research_question', ''),
-        keywords=data.get('keywords', [])
-    )
+    paper_id = kg.add_paper(data)
     return jsonify({'paper_id': paper_id, 'success': True})
 
 @app.route('/api/recommend', methods=['POST'])
