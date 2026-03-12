@@ -23,6 +23,7 @@ from lab_log import LabLogAssistant
 from ppt_outline import PPTOutliner
 from reference_formatter import ReferenceFormatter
 from arxiv_fetcher import ArxivFetcher, translate_keywords
+from hardware_integration import HardwareController, create_hardware_api
 
 app = Flask(__name__)
 
@@ -34,6 +35,10 @@ lab_log = LabLogAssistant()
 ppt_outliner = PPTOutliner()
 ref_formatter = ReferenceFormatter()
 arxiv_fetcher = ArxivFetcher(max_results=5)
+hardware = HardwareController()
+
+# 注册硬件 API
+create_hardware_api(app)
 
 # 内存缓存
 cache = {}
