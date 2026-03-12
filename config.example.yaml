@@ -1,0 +1,89 @@
+# 学术龙虾 v2 配置文件示例
+# 复制为 config.yaml 后使用
+
+# ==================== 应用配置 ====================
+app:
+  name: "学术龙虾 v2"
+  version: "2.0.0"
+  debug: false  # 生产环境设为 false
+
+# ==================== Web 服务配置 ====================
+web:
+  host: "0.0.0.0"
+  port: 5001
+  cors_enabled: true
+  secret_key: "change-this-to-a-random-secret-key"
+
+# ==================== 数据存储配置 ====================
+storage:
+  # 数据目录（相对于用户主目录）
+  data_dir: "~/.academic_lobster"
+  
+  # 知识图谱数据库
+  knowledge_graph: "knowledge_graph.json"
+  
+  # 实验日志数据库
+  lab_logs: "lab_logs.json"
+  
+  # 缓存配置
+  cache:
+    enabled: true
+    ttl: 3600  # 缓存过期时间（秒）
+
+# ==================== arXiv API 配置 ====================
+arxiv:
+  enabled: true
+  max_results: 10
+  timeout: 30  # 请求超时（秒）
+  
+  # 搜索配置
+  search:
+    sort_by: "relevance"  # relevance, submittedDate, lastUpdatedDate
+    sort_order: "descending"  # ascending, descending
+
+# ==================== NLP 配置 ====================
+nlp:
+  # 关键词提取
+  keyword_extraction:
+    max_keywords: 10
+    min_word_length: 2
+  
+  # 摘要生成
+  summarization:
+    max_length: 500
+    min_length: 100
+
+# ==================== 语音配置（可选） ====================
+voice:
+  enabled: false
+  language: "zh-CN"
+  rate: 150  # 语速
+
+# ==================== 日志配置 ====================
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "academic_lobster.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# ==================== 安全配置 ====================
+security:
+  # 本地模式（不联网）
+  local_only: false
+  
+  # 数据加密
+  encrypt_data: false
+  
+  # API 密钥（如果使用云端 AI）
+  # openai_api_key: ""
+  # anthropic_api_key: ""
+
+# ==================== 功能开关 ====================
+features:
+  knowledge_graph: true
+  smart_recommend: true
+  summarizer: true
+  lab_log: true
+  ppt_outline: true
+  reference_formatter: true
+  voice_interface: false
+  arxiv_fetcher: true

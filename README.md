@@ -2,7 +2,14 @@
 
 > **课题组私有、本地优先、可落地的科研知识大脑**
 
-**参赛目标：** 中关村北纬龙虾大赛 学术赛道冠军 & 全场最佳
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/bieyl/research)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-competition%20ready-brightgreen.svg)]()
+
+**参赛目标：** 中关村北纬龙虾大赛 学术赛道冠军 & 全场最佳 🏆
+
+---
 
 ---
 
