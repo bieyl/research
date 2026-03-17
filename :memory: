@@ -1,0 +1,248 @@
+{
+  "nodes": [
+    {
+      "id": "paper_001",
+      "type": "paper",
+      "data": {
+        "id": "paper_001",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "残差连接",
+        "conclusion": "可训练 152 层网络，ImageNet 错误率降低",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别",
+          "CNN"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "paper_002",
+      "type": "paper",
+      "data": {
+        "id": "paper_002",
+        "title": "Identity Mappings in Deep Residual Networks",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "改进的残差连接（pre-activation）",
+        "conclusion": "恒等映射进一步提升性能",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别",
+          "CNN"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "exp_001",
+      "type": "experiment",
+      "data": {
+        "id": "exp_001",
+        "date": "2026-03-12",
+        "purpose": "改进 ResNet 残差块",
+        "method": "引入注意力机制",
+        "result": "准确率 87% → 89%",
+        "conclusion": "注意力机制有效",
+        "tags": [
+          "注意力机制",
+          "ResNet 改进"
+        ]
+      }
+    },
+    {
+      "id": "test_001",
+      "type": "paper",
+      "data": {
+        "id": "test_001",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "残差连接",
+        "conclusion": "可训练 152 层网络",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "test_002",
+      "type": "paper",
+      "data": {
+        "id": "test_002",
+        "title": "Identity Mappings in Deep Residual Networks",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "改进的残差连接",
+        "conclusion": "pre-activation 进一步提升",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "test_exp_001",
+      "type": "experiment",
+      "data": {
+        "id": "test_exp_001",
+        "date": "2026-03-12",
+        "purpose": "改进 ResNet 残差块",
+        "method": "引入注意力机制",
+        "result": "准确率 87% → 89%",
+        "conclusion": "注意力机制有效",
+        "tags": [
+          "注意力机制",
+          "ResNet"
+        ]
+      }
+    },
+    {
+      "id": "paper_001",
+      "type": "paper",
+      "data": {
+        "id": "paper_001",
+        "title": "Deep Residual Learning for Image Recognition",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "残差连接",
+        "conclusion": "可训练 152 层网络，ImageNet 错误率降低",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别",
+          "CNN"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "paper_002",
+      "type": "paper",
+      "data": {
+        "id": "paper_002",
+        "title": "Identity Mappings in Deep Residual Networks",
+        "authors": [
+          "He K",
+          "Zhang X",
+          "Ren S",
+          "Sun J"
+        ],
+        "year": 2016,
+        "research_question": "深层网络训练退化问题",
+        "method": "改进的残差连接（pre-activation）",
+        "conclusion": "恒等映射进一步提升性能",
+        "keywords": [
+          "深度学习",
+          "残差学习",
+          "图像识别",
+          "CNN"
+        ],
+        "category": "计算机视觉"
+      }
+    },
+    {
+      "id": "exp_001",
+      "type": "experiment",
+      "data": {
+        "id": "exp_001",
+        "date": "2026-03-12",
+        "purpose": "改进 ResNet 残差块",
+        "method": "引入注意力机制",
+        "result": "准确率 87% → 89%",
+        "conclusion": "注意力机制有效",
+        "tags": [
+          "注意力机制",
+          "ResNet 改进"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "paper_002",
+      "target": "paper_001",
+      "type": "related",
+      "reason": "4 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_001",
+      "target": "paper_001",
+      "type": "related",
+      "reason": "3 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_001",
+      "target": "paper_002",
+      "type": "related",
+      "reason": "3 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_002",
+      "target": "paper_001",
+      "type": "related",
+      "reason": "3 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_002",
+      "target": "paper_002",
+      "type": "related",
+      "reason": "3 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_002",
+      "target": "test_001",
+      "type": "related",
+      "reason": "3 个共同关键词，相似研究方法，相同学科领域"
+    },
+    {
+      "source": "test_exp_001",
+      "target": "exp_001",
+      "type": "related",
+      "reason": "相似研究方法"
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-03-12T13:36:27.061350",
+    "updated_at": "2026-03-12T13:42:06.801416"
+  }
+}

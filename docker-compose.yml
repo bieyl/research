@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  academic-lobster:
+    build: .
+    container_name: academic-lobster-v2
+    ports:
+      - "5001:5001"
+    volumes:
+      # 持久化存储数据
+      - lobster_data:/root/.academic_lobster
+      # 可选：挂载本地代码进行开发
+      # - ./src:/app/src
+    environment:
+      - FLASK_ENV=production
+      - FLASK_PORT=5001
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5001/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  lobster_data:
+    driver: local
