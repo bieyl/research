@@ -15,7 +15,7 @@
 | **实效证明** | docs/IMPACT-EVIDENCE.md | ✅ |
 | **竞争力分析** | docs/COMPETITION-ANALYSIS.md | ✅ |
 | **产品评估** | docs/PRODUCT-DEEP-EVALUATION.md | ✅ |
-| **演示视频** | [B 站链接 - 待上传] | ⏳ |
+| **演示视频** | https://github.com/bieyl/research/blob/main/video_final_clean.mp4 | ✅ |
 | **项目海报** | assets/PROJECT-POSTER.md | ✅ |
 
 ---
@@ -78,7 +78,9 @@
 
 **上传指南：** `assets/BILIBILI-UPLOAD-GUIDE.md`
 
-**B 站链接：** [请按指南录制并上传后填写]
+**GitHub 视频链接：** https://github.com/bieyl/research/blob/main/video_final_clean.mp4
+
+**B 站链接：** [待上传后填写]
 
 **备用方案：** 使用截图合成视频（见指南）
 
@@ -86,7 +88,7 @@
 
 ## 📊 项目海报
 
-![项目海报](assets/PROJECT-POSTER.md)
+**海报文档：** https://github.com/bieyl/research/blob/main/assets/PROJECT-POSTER.md
 
 **海报内容：**
 - 核心定位
