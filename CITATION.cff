@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you use Academic Lobster v2 in your research, please cite it using these metadata."
+title: "Academic Lobster v2: Local-First Research Knowledge Brain"
+abstract: "Academic Lobster v2 is a local-first research knowledge brain designed for graduate students and research groups. It automatically builds a hierarchical knowledge tree connecting research problems → methods → papers → experiments, enabling intelligent association between experiments and relevant literature."
+authors:
+  - family-names: "Bie"
+    given-names: "Yunlong"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    affiliation: "Beijing Zhongguancun Institute"
+  - family-names: "Academic Lobster Team"
+    affiliation: "Beijing Zhongguancun Institute"
+version: "2.0.0"
+doi: "10.5281/zenodo.XXXXXX"  # To be assigned
+date-released: "2026-03-17"
+url: "https://github.com/bieyl/research"
+repository-code: "https://github.com/bieyl/research"
+license: "MIT"
+keywords:
+  - "research"
+  - "knowledge management"
+  - "literature review"
+  - "graduate students"
+  - "local-first"
+  - "privacy"
+  - "knowledge graph"
+  - "recommendation system"
+  - "presentation generation"
+programming-languages:
+  - "Python 3.9+"
+references:
+  - type: article
+    title: "Deep Residual Learning for Image Recognition"
+    authors:
+      - family-names: "He"
+        given-names: "Kaiming"
+      - family-names: "Zhang"
+        given-names: "Xiangyu"
+      - family-names: "Ren"
+        given-names: "Shaoqing"
+      - family-names: "Sun"
+        given-names: "Jian"
+    journal: "CVPR"
+    year: 2016
+  - type: article
+    title: "Attention Is All You Need"
+    authors:
+      - family-names: "Vaswani"
+        given-names: "Ashish"
+    journal: "NeurIPS"
+    year: 2017
+  - type: article
+    title: "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale"
+    authors:
+      - family-names: "Dosovitskiy"
+        given-names: "Alexey"
+    journal: "ICLR"
+    year: 2021
+  - type: article
+    title: "Swin Transformer: Hierarchical Vision Transformer using Shifted Windows"
+    authors:
+      - family-names: "Liu"
+        given-names: "Ze"
+    journal: "ICCV"
+    year: 2021

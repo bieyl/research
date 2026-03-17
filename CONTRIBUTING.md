@@ -1,391 +1,589 @@
-# Contributing to 学术龙虾 v2
+# Contributing to Academic Lobster v2
 
-首先，感谢你愿意为学术龙虾 v2 贡献代码！本指南将帮助你快速上手。
+**Thank you for your interest in contributing!** 🎉
 
----
-
-## 📋 目录
-
-- [行为准则](#行为准则)
-- [如何贡献](#如何贡献)
-- [开发环境搭建](#开发环境搭建)
-- [代码风格](#代码风格)
-- [Pull Request 流程](#pull-request-流程)
-- [添加新功能](#添加新功能)
-- [报告 Bug](#报告 -bug)
-- [建议新功能](#建议新功能)
+This document provides guidelines and instructions for contributing to Academic Lobster v2.
 
 ---
 
-## 行为准则
+## 📋 Table of Contents
 
-本项目遵循 [Contributor Covenant](https://www.contributor-covenant.org/) 行为准则：
-
-- 使用友好和包容的语言
-- 尊重不同的观点和经验
-- 优雅地接受建设性批评
-- 关注对社区最有利的事情
-- 对其他社区成员表示同理心
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Making Changes](#making-changes)
+- [Pull Request Process](#pull-request-process)
+- [Coding Standards](#coding-standards)
+- [Testing Guidelines](#testing-guidelines)
+- [Documentation Guidelines](#documentation-guidelines)
+- [Module Development](#module-development)
+- [Bug Reports](#bug-reports)
+- [Feature Requests](#feature-requests)
 
 ---
 
-## 如何贡献
+## 🤝 Code of Conduct
 
-### 你可以贡献的内容
+### Our Pledge
 
-- 🐛 报告 Bug
-- 💡 建议新功能
-- 📝 改进文档
-- 🎨 改进 UI/UX
-- 🔧 提交代码修复
-- 🧪 添加测试用例
-- 🌍 翻译文档
+We pledge to make participation in our project a harassment-free experience for everyone.
 
-### 贡献流程概览
+### Our Standards
 
+Examples of behavior that contributes to creating a positive environment:
+
+- ✅ Using welcoming and inclusive language
+- ✅ Being respectful of differing viewpoints
+- ✅ Gracefully accepting constructive criticism
+- ✅ Focusing on what is best for the community
+- ✅ Showing empathy towards other community members
+
+Examples of unacceptable behavior:
+
+- ❌ The use of sexualized language or imagery
+- ❌ Trolling, insulting/derogatory comments
+- ❌ Public or private harassment
+- ❌ Publishing others' private information
+- ❌ Other conduct which could reasonably be considered inappropriate
+
+---
+
+## 🚀 Getting Started
+
+### 1. Fork the Repository
+
+```bash
+# Click "Fork" on GitHub
+# Then clone your fork
+git clone https://github.com/YOUR_USERNAME/research.git
+cd research/academic-lobster
 ```
-1. Fork 仓库
-2. Clone 到本地
-3. 创建分支 (git checkout -b feature/AmazingFeature)
-4. 提交更改 (git commit -m 'Add some AmazingFeature')
-5. 推送到分支 (git push origin feature/AmazingFeature)
-6. 开启 Pull Request
+
+### 2. Set Up Development Environment
+
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# Download NLP models
+python -m spacy download en_core_web_sm
+
+# Verify installation
+python -m pytest tests/ -v
+```
+
+### 3. Create a Branch
+
+```bash
+# Create feature branch
+git checkout -b feature/your-feature-name
+
+# Or bug fix branch
+git checkout -b fix/issue-123
 ```
 
 ---
 
-## 开发环境搭建
+## 💻 Development Setup
 
-### 前置要求
+### Required Tools
 
 - Python 3.9+
-- Git
-- pip 或 conda
+- pip
+- git
+- pytest (for testing)
+- black (for code formatting)
+- flake8 (for linting)
 
-### 步骤
+### Optional Tools
+
+- VS Code with Python extension
+- Docker (for containerized testing)
+- Postman (for API testing)
+
+### IDE Configuration
+
+**VS Code Settings:**
+```json
+{
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [88]
+}
+```
+
+---
+
+## 🔧 Making Changes
+
+### 1. Understand the Issue
+
+- Read the issue description carefully
+- Ask questions if anything is unclear
+- Confirm the expected behavior
+
+### 2. Plan Your Changes
+
+- Identify affected files
+- Consider edge cases
+- Plan tests needed
+
+### 3. Implement Changes
 
 ```bash
-# 1. Fork 仓库
-# 在 GitHub 上点击 Fork 按钮
+# Make your changes
+# Then format code
+black src/ tests/
 
-# 2. Clone 到本地
-git clone https://github.com/YOUR_USERNAME/research.git
-cd research
+# Lint code
+flake8 src/ tests/
 
-# 3. 创建虚拟环境
-python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-# 或
-venv\Scripts\activate     # Windows
+# Run tests
+pytest tests/ -v
 
-# 4. 安装依赖
-pip install -r requirements.txt
-
-# 5. 安装开发依赖
-pip install -r requirements-dev.txt  # 如果有的话
-
-# 6. 运行测试
-python -m pytest tests/
-
-# 7. 启动开发服务器
-python3 src/web_app_v2.py
+# Check coverage
+pytest --cov=src tests/
 ```
 
----
+### 4. Write Tests
 
-## 代码风格
-
-### Python 代码规范
-
-遵循 [PEP 8](https://pep8.org/) 规范：
-
+**Test File Structure:**
 ```python
-# ✅ 好的示例
-def calculate_similarity(doc1, doc2):
-    """计算两个文档的相似度分数"""
-    if not doc1 or not doc2:
-        return 0.0
-    return cosine_similarity(doc1, doc2)
-
-# ❌ 坏的示例
-def calcSim(d1,d2):  # 命名不清晰
-    if d1==None or d2==None:  # 应用 is None
-        return 0
-    return cosine_similarity(d1,d2)  # 缺少空格
-```
-
-### 代码检查工具
-
-```bash
-# 安装检查工具
-pip install flake8 black isort mypy
-
-# 格式化代码
-black src/
-
-# 排序 imports
-isort src/
-
-# 检查代码风格
-flake8 src/
-
-# 类型检查
-mypy src/
-```
-
-### 提交信息规范
-
-遵循 [Conventional Commits](https://www.conventionalcommits.org/)：
-
-```
-feat: 添加新的知识图谱可视化功能
-fix: 修复文献摘要生成的空指针错误
-docs: 更新 README 安装指南
-style: 格式化代码（不影响功能）
-refactor: 重构推荐引擎（无功能变化）
-test: 添加知识图谱单元测试
-chore: 更新依赖版本
-```
-
----
-
-## Pull Request 流程
-
-### PR 标题规范
-
-```
-<type>(<scope>): <subject>
-
-示例：
-feat(ui): 添加深色模式支持
-fix(core): 修复中文分词错误
-docs(readme): 更新快速开始指南
-```
-
-### PR 描述模板
-
-```markdown
-## 描述
-简要说明这个 PR 做了什么
-
-## 相关 Issue
-Fixes #123
-
-## 更改类型
-- [ ] Bug 修复
-- [ ] 新功能
-- [ ] 文档更新
-- [ ] 代码重构
-- [ ] 测试添加
-
-## 测试
-- [ ] 已添加单元测试
-- [ ] 已手动测试
-- [ ] 不需要测试
-
-## 截图（如适用）
-[截图]
-
-## 检查清单
-- [ ] 代码遵循项目规范
-- [ ] 已更新文档
-- [ ] 无新的警告信息
-- [ ] 通过了所有测试
-```
-
-### 审查流程
-
-1. **自动检查**：GitHub Actions 运行测试和代码检查
-2. **Maintainer 审查**：至少需要 1 个维护者批准
-3. **解决问题**：根据审查意见修改代码
-4. **合并**：审查通过后合并到 main 分支
-
----
-
-## 添加新功能
-
-### 步骤
-
-1. **讨论**：先在 Issue 中讨论新功能的必要性
-2. **设计**：说明功能设计和技术方案
-3. **实现**：编写代码和测试
-4. **文档**：更新相关文档
-5. **提交**：创建 Pull Request
-
-### 示例：添加新的推荐算法
-
-```python
-# src/new_recommender.py
-
-class NewRecommender:
-    """基于 XXX 的新型推荐算法"""
-    
-    def __init__(self, config):
-        self.config = config
-    
-    def recommend(self, query, top_k=10):
-        """
-        生成推荐结果
-        
-        Args:
-            query: 查询文本
-            top_k: 返回数量
-            
-        Returns:
-            List[Dict]: 推荐结果列表
-        """
-        # 实现代码
-        pass
-    
-    def _validate_input(self, query):
-        """验证输入格式"""
-        # 验证逻辑
-        pass
-```
-
-### 测试示例
-
-```python
-# tests/test_new_recommender.py
+# tests/test_your_module.py
 
 import pytest
-from src.new_recommender import NewRecommender
+from src.your_module import your_function
 
-def test_recommend_returns_list():
-    recommender = NewRecommender(config={})
-    result = recommender.recommend("test query")
-    assert isinstance(result, list)
+def test_your_function_success():
+    """Test successful execution"""
+    result = your_function(input_data)
+    assert result == expected_output
 
-def test_recommend_respects_top_k():
-    recommender = NewRecommender(config={})
-    result = recommender.recommend("test query", top_k=5)
-    assert len(result) <= 5
+def test_your_function_failure():
+    """Test error handling"""
+    with pytest.raises(ValueError):
+        your_function(invalid_input)
 ```
 
 ---
 
-## 报告 Bug
+## 📤 Pull Request Process
 
-### Bug 报告模板
+### 1. Before Submitting
+
+- [ ] Code is formatted (black)
+- [ ] Code passes linting (flake8)
+- [ ] All tests pass
+- [ ] Test coverage >= 85%
+- [ ] Documentation updated
+- [ ] Commit messages are clear
+
+### 2. Create Pull Request
+
+```bash
+# Commit changes
+git add .
+git commit -m "feat: add your feature description"
+
+# Push to GitHub
+git push origin feature/your-feature-name
+
+# Open PR on GitHub
+# - Title: Clear and descriptive
+# - Description: Explain what and why
+# - Link related issues
+```
+
+### 3. PR Template
 
 ```markdown
-**描述问题**
-清晰简洁地描述问题是什么
+## Description
+Brief description of changes
 
-**复现步骤**
-1. 执行步骤 1
-2. 执行步骤 2
-3. 看到错误
+## Type of Change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
+- [ ] Documentation update
 
-**期望行为**
-清晰简洁地描述期望发生什么
+## Testing
+- [ ] Tests added/updated
+- [ ] All tests pass
+- [ ] Coverage maintained
 
-**截图**
-如适用，添加截图帮助说明
-
-**环境信息**
-- OS: [e.g. macOS 14.0]
-- Python: [e.g. 3.9.18]
-- Version: [e.g. 2.0.0]
-
-**日志**
-```
-错误日志内容
+## Checklist
+- [ ] Code formatted
+- [ ] Code linted
+- [ ] Documentation updated
+- [ ] Examples tested
 ```
 
-**额外信息**
-其他有助于解决问题的信息
-```
+### 4. Code Review
 
-### 提交 Bug
+- Respond to reviewer comments
+- Make requested changes
+- Request re-review when ready
 
-1. 在 [Issues](https://github.com/bieyl/research/issues) 中搜索是否已有相同问题
-2. 如果没有，点击 "New Issue"
-3. 选择 "Bug Report" 模板
-4. 填写详细信息
-5. 提交
+### 5. Merge
+
+- PR approved by maintainer
+- All CI checks pass
+- Squash and merge
 
 ---
 
-## 建议新功能
+## 📝 Coding Standards
 
-### 功能建议模板
+### Python Style Guide
 
-```markdown
-**功能描述**
-清晰简洁地描述你想要的功能
+Follow [PEP 8](https://pep8.readthedocs.io/) with these specifics:
 
-**动机**
-为什么需要这个功能？解决什么问题？
+**Line Length:** 88 characters (black default)
 
-**替代方案**
-有没有其他方式可以实现？
+**Imports:**
+```python
+# Standard library
+import os
+import sys
 
-**额外信息**
-其他有助于理解的信息
+# Third-party
+import flask
+import spacy
+
+# Local imports
+from src.knowledge_graph import KnowledgeGraph
+from src.models import Paper
 ```
 
-### 提交建议
+**Functions:**
+```python
+def add_paper(paper: Paper) -> int:
+    """
+    Add paper to knowledge graph
+    
+    Args:
+        paper: Paper object with metadata
+        
+    Returns:
+        paper_id: Assigned database ID
+        
+    Raises:
+        ValueError: If paper is invalid
+    """
+    # Implementation...
+```
 
-1. 在 [Issues](https://github.com/bieyl/research/issues) 中搜索是否已有相同建议
-2. 如果没有，点击 "New Issue"
-3. 选择 "Feature Request" 模板
-4. 填写详细信息
-5. 提交
+**Classes:**
+```python
+class KnowledgeGraph:
+    """Knowledge graph engine for research papers"""
+    
+    def __init__(self, db_path: str):
+        """Initialize knowledge graph"""
+        self.db_path = db_path
+        self.db = sqlite3.connect(db_path)
+```
+
+### Naming Conventions
+
+- **Variables:** `snake_case` (e.g., `paper_id`)
+- **Functions:** `snake_case` (e.g., `add_paper()`)
+- **Classes:** `PascalCase` (e.g., `KnowledgeGraph`)
+- **Constants:** `UPPER_CASE` (e.g., `MAX_PAPERS`)
+- **Private:** `_prefix` (e.g., `_internal_method()`)
 
 ---
 
-## 文档规范
+## 🧪 Testing Guidelines
 
-### Markdown 格式
+### Test Categories
 
-- 使用 `#` 表示标题层级
-- 使用 `-` 或 `*` 表示列表
-- 使用 ` ```language ` 表示代码块
-- 使用 `**粗体**` 强调重点
+**Unit Tests:**
+```python
+def test_add_paper():
+    """Test paper addition"""
+    kg = KnowledgeGraph(":memory:")
+    paper = Paper(title="Test", year=2026)
+    paper_id = kg.add_paper(paper)
+    assert paper_id > 0
+```
 
-### 文档结构
+**Integration Tests:**
+```python
+def test_full_workflow():
+    """Test complete workflow"""
+    # Upload paper → Build tree → Get recommendations
+```
 
-```markdown
-# 功能名称
+**Performance Tests:**
+```python
+def test_search_performance(benchmark):
+    """Test search latency"""
+    result = benchmark(kg.search, "transformer")
+    assert len(result) > 0
+```
 
-简要描述（1-2 句话）
+### Running Tests
 
-## 使用场景
+```bash
+# All tests
+pytest tests/ -v
 
-什么情况下使用这个功能
+# Specific file
+pytest tests/test_knowledge_graph.py -v
 
-## 使用方法
+# With coverage
+pytest --cov=src tests/
+
+# Performance tests
+pytest tests/benchmarks/ -v
+```
+
+### Coverage Requirements
+
+- **Overall:** >= 85%
+- **Core modules:** >= 90%
+- **New code:** >= 90%
+
+---
+
+## 📚 Documentation Guidelines
+
+### Code Comments
 
 ```python
-# 代码示例
+# Bad: Obvious comment
+i += 1  # Increment i
+
+# Good: Why comment
+i += 1  # Skip header row
 ```
 
-## 参数说明
+### Docstrings
 
-| 参数 | 类型 | 说明 | 默认值 |
-|------|------|------|--------|
-| param1 | str | 说明 | None |
+```python
+def calculate_relevance(experiment, paper):
+    """
+    Calculate relevance score (0-100)
+    
+    Scoring breakdown:
+    - Keyword matching: 40%
+    - Method similarity: 30%
+    - Domain relevance: 20%
+    - Recency: 10%
+    
+    Args:
+        experiment: Experiment object
+        paper: Paper object
+        
+    Returns:
+        float: Relevance score (0-100)
+    """
+```
 
-## 示例输出
+### Documentation Files
 
-展示输出结果
+**Location:** `docs/` directory
 
-## 注意事项
+**Format:** Markdown
 
-需要特别注意的地方
+**Structure:**
+```markdown
+# Module Name
+
+## Overview
+Brief description
+
+## Usage
+Code examples
+
+## API Reference
+Function signatures
+
+## Examples
+Real-world use cases
+
+## Troubleshooting
+Common issues and solutions
 ```
 
 ---
 
-## 许可证
+## 🧩 Module Development
 
-通过贡献代码，你同意你的贡献遵循本项目的 [MIT License](LICENSE)。
+### Adding a New Module
+
+**1. Create Module File:**
+```python
+# src/new_module.py
+
+class NewModule:
+    """New module description"""
+    
+    def __init__(self):
+        """Initialize module"""
+        pass
+    
+    def main_function(self, input_data):
+        """
+        Main function description
+        
+        Args:
+            input_data: Input data
+            
+        Returns:
+            Output data
+        """
+        # Implementation
+        return output
+```
+
+**2. Add Tests:**
+```python
+# tests/test_new_module.py
+
+def test_new_module():
+    """Test new module"""
+    module = NewModule()
+    result = module.main_function(test_input)
+    assert result == expected
+```
+
+**3. Add to Web App:**
+```python
+# src/web_app_v2.py
+
+from src.new_module import NewModule
+
+@app.route('/api/new-endpoint', methods=['POST'])
+def new_endpoint():
+    """New API endpoint"""
+    module = NewModule()
+    result = module.main_function(request.json)
+    return jsonify(result)
+```
+
+**4. Update Documentation:**
+- Add to `docs/MODULES.md`
+- Add examples to `examples/`
+- Update `README.md` if needed
 
 ---
 
-## 致谢
+## 🐛 Bug Reports
 
-感谢所有为学术龙虾 v2 做出贡献的开发者！
+### How to Report a Bug
 
-🦞 **学术龙虾 v2，为每一位认真做研究的人服务。**
+**1. Check Existing Issues**
+- Search for similar issues
+- Avoid duplicates
+
+**2. Create New Issue**
+- Use bug report template
+- Provide clear title
+- Include steps to reproduce
+
+**3. Bug Report Template:**
+```markdown
+## Description
+Clear description of the bug
+
+## Steps to Reproduce
+1. Step 1
+2. Step 2
+3. Step 3
+
+## Expected Behavior
+What should happen
+
+## Actual Behavior
+What actually happens
+
+## Environment
+- OS: [e.g., macOS 14.0]
+- Python: [e.g., 3.11]
+- Version: [e.g., 2.0.0]
+
+## Screenshots
+If applicable
+
+## Additional Context
+Any other relevant information
+```
+
+---
+
+## 💡 Feature Requests
+
+### How to Request a Feature
+
+**1. Check Existing Issues**
+- Search for similar requests
+- Avoid duplicates
+
+**2. Create New Issue**
+- Use feature request template
+- Explain use case
+- Describe expected behavior
+
+**3. Feature Request Template:**
+```markdown
+## Problem Statement
+What problem does this solve?
+
+## Proposed Solution
+How should it work?
+
+## Use Cases
+Who will use this and how?
+
+## Alternatives Considered
+What other solutions exist?
+
+## Additional Context
+Any other relevant information
+```
+
+---
+
+## 🎓 Learning Resources
+
+### Python
+
+- [Python Official Tutorial](https://docs.python.org/3/tutorial/)
+- [PEP 8 Style Guide](https://pep8.readthedocs.io/)
+- [Real Python](https://realpython.com/)
+
+### Flask
+
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
+### Testing
+
+- [pytest Documentation](https://docs.pytest.org/)
+- [Test-Driven Development with Python](https://www.obeythetestinggoat.com/)
+
+### Git
+
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Guides](https://guides.github.com/)
+
+---
+
+## 📞 Getting Help
+
+- **GitHub Issues:** https://github.com/bieyl/research/issues
+- **Email:** bieyunlong1@163.com
+- **Discussions:** https://github.com/bieyl/research/discussions
+
+---
+
+## 🙏 Thank You!
+
+Every contribution, no matter how small, makes Academic Lobster v2 better for everyone.
+
+**Happy coding!** 🦞
